@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import HeroSection from "@/components/HeroSection";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,7 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import ProductCard from "@/components/ProductCard";
 import products from "../data/products";
-import { ShoppingCart, ArrowRight, Image } from "lucide-react";
+import { Star, Image, ShoppingCart, ArrowRight, ChevronDown, ChevronsUp, ChevronsDown } from "lucide-react";
 
 const HomePage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,53 +25,54 @@ const HomePage = () => {
   const categories = Array.from(new Set(products.map(product => product.category)));
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-galaxy-accent-yellow/20 via-white to-galaxy-accent-green/20">
+    <div className="min-h-screen bg-gradient-to-b from-galaxy-accent-yellow/30 via-white to-galaxy-accent-green/20">
       {/* Hero Section */}
-      <section className="relative py-16 md:py-24 bg-gradient-to-bl from-galaxy-accent-yellow/40 to-galaxy-accent-green/10 overflow-hidden">
-        <div className="absolute -top-10 -left-20 w-56 h-56 rounded-full bg-galaxy-purple opacity-20 blur-2xl" />
-        <div className="container mx-auto px-4 z-10 relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className={`space-y-6 transition-all duration-700 ${isVisible ? 'animate-fade-in' : 'opacity-0'} `}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight flex items-center gap-3">
-                <Image className="inline-block text-galaxy-dark-purple animate-float" size={38} />
-                Discover the Future of{" "}
-                <span className="bg-gradient-to-r from-galaxy-purple to-galaxy-dark-purple bg-clip-text text-transparent animate-gradient">
-                  Technology
-                </span>
-              </h1>
-              <p className="text-lg md:text-xl text-gray-600 max-w-lg animate-fade-in">
-                Explore our collection of cutting-edge devices and accessories designed for the modern explorer.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild className="bg-galaxy-purple hover:bg-galaxy-dark-purple text-white px-8 py-6 rounded-md text-lg button-hover-effect hover:scale-105 transition-transform duration-200 flex items-center gap-2">
-                  <Link to="/products">
-                    <ShoppingCart className="mr-1" size={22} />
-                    Shop Now
-                    <ArrowRight className="ml-1 animate-slide-in-right" size={18} />
-                  </Link>
-                </Button>
-                <Button variant="outline" asChild className="px-8 py-6 rounded-md text-lg hover:bg-galaxy-accent-yellow/40 border-galaxy-purple border-2 transition-colors duration-200">
-                  <Link to="/products">View Deals</Link>
-                </Button>
-              </div>
-            </div>
-            <div className={`relative ${isVisible ? 'animate-fade-in' : 'opacity-0'} animation-delay-300`}>
-              <div className="relative aspect-square md:aspect-[4/3] overflow-hidden rounded-xl animate-float shadow-lg border-4 border-galaxy-purple/10">
-                <img
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80"
-                  alt="Latest technology products"
-                  className="object-cover w-full h-full scale-105 transition-transform duration-500 hover:scale-110"
-                />
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-white/95 shadow-lg p-4 rounded-lg flex items-center gap-2 animate-fade-in">
-                <ArrowRight className="text-galaxy-purple" size={18} />
+      <HeroSection />
+
+      {/* Unique Selling Points / About */}
+      <section id="about-company" className="py-20 bg-gradient-to-tr from-white via-galaxy-accent-yellow/40 to-galaxy-accent-green/20 animate-fade-in">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10 bg-gradient-to-tr from-galaxy-dark-purple to-galaxy-purple bg-clip-text text-transparent animate-gradient">
+            Why Shop With Us?
+          </h2>
+          <div className="flex flex-col md:flex-row gap-10 items-center justify-center">
+            {/* Usps */}
+            <div className="flex-1 flex flex-col gap-8">
+              <div className="flex gap-4 items-start animate-fade-in" style={{ animationDelay: "100ms" }}>
+                <ShoppingCart size={30} className="text-galaxy-purple bg-galaxy-accent-yellow/60 rounded-xl p-1 animate-float" />
                 <div>
-                  <p className="font-bold text-galaxy-purple">New Arrivals</p>
-                  <p className="text-sm text-gray-600">Just launched this week</p>
+                  <h3 className="font-bold text-lg text-galaxy-dark-purple">Curated Premium Products</h3>
+                  <p className="text-galaxy-dark-purple/80">Every item is handpicked by tech experts for unmatched quality and innovation.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 items-start animate-fade-in" style={{ animationDelay: "200ms" }}>
+                <Star size={30} className="text-yellow-400 bg-galaxy-accent-green/40 rounded-xl p-1 animate-float" />
+                <div>
+                  <h3 className="font-bold text-lg text-galaxy-dark-purple">Trusted by Thousands</h3>
+                  <p className="text-galaxy-dark-purple/80">Join a growing community of technology lovers across the globe.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 items-start animate-fade-in" style={{ animationDelay: "300ms" }}>
+                <Image size={30} className="text-galaxy-dark-purple bg-galaxy-accent-yellow/70 rounded-xl p-1 animate-float" />
+                <div>
+                  <h3 className="font-bold text-lg text-galaxy-dark-purple">Fast & Secure Shipping</h3>
+                  <p className="text-galaxy-dark-purple/80">Enjoy peace of mind with reliable, insured delivery for every order.</p>
                 </div>
               </div>
             </div>
+            {/* Illustration */}
+            <div className="flex-1 flex items-center justify-center animate-scale-in" style={{ animationDelay: "600ms" }}>
+              <img
+                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=500&q=80"
+                alt="Tech shopping illustration"
+                className="rounded-3xl shadow-2xl border-4 border-galaxy-purple/20 w-[310px] md:w-[370px] animate-float"
+                loading="lazy"
+              />
+            </div>
           </div>
+        </div>
+        <div className="flex justify-center mt-12 animate-bounce">
+          <ChevronsDown size={36} className="text-galaxy-purple" />
         </div>
       </section>
 
@@ -116,7 +118,6 @@ const HomePage = () => {
               >
                 <img
                   src={
-                    // Category-specific placeholder
                     category === "Laptops"
                       ? "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=600&q=80"
                       : category === "Smartphones"
@@ -130,8 +131,10 @@ const HomePage = () => {
                   alt={category}
                   className="absolute inset-0 object-cover w-full h-full brightness-80 group-hover:brightness-100 transition duration-200"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-galaxy-deep-space/90 to-transparent flex items-end p-4 transition-all duration-300 group-hover:from-galaxy-purple/90 group-hover:to-galaxy-accent-yellow/30">
-                  <h3 className="text-white font-semibold text-lg underline-offset-4 group-hover:underline">{category}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-galaxy-deep-space/80 to-transparent flex items-end p-4 transition-all duration-300 group-hover:from-galaxy-purple/80 group-hover:to-galaxy-accent-yellow/50">
+                  <h3 className="text-white font-semibold text-lg underline-offset-4 group-hover:underline drop-shadow-lg">
+                    {category}
+                  </h3>
                 </div>
               </Link>
             ))}
@@ -230,4 +233,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

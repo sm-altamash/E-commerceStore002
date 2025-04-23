@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import FeaturedProductsSection from "@/components/FeaturedProductsSection";
@@ -8,6 +9,7 @@ import {
   Star,
   Image,
   ShoppingCart,
+  ShoppingBag,
 } from "lucide-react";
 import {
   Carousel,
